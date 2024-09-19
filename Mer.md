@@ -1,54 +1,49 @@
-
 ```mermaid
 erDiagram
     
-    Musica {
-        id_musica INT PK
-        titulo VARCHAR(255)
-        duracao INT
-        id_disco INT FK
-    }
-
     Artista {
-        id_artista INT PK
-        nome VARCHAR(255)
-        data_nascimento DATE
+        id_artista int PK
+        nome_artista varchar(255)
+        data_nascimento date
     }
 
     Disco {
-        id_disco INT PK
-        titulo VARCHAR(255)
-        data_lancamento DATE
-        id_artista INT FK
+        id_disco int PK
+        id_artista int FK
+        titulo_disco varchar(255)
+        data_lancamento date
     }
 
-    Usuario {
-        id_usuario INT PK
-        nome VARCHAR(255)
-        email VARCHAR(255) UNIQUE
-        data_registro DATE
+    Musica {
+        id_musica int PK
+        id_disco int FK
+        titulo_musica varchar(255)
+        duracao int
     }
 
-    Playlist {
-        id_playlist INT PK
-        titulo VARCHAR(255)
-        id_usuario INT FK 
+
+     Playlist {
+        id_playlist int PK
+        id_usuario int FK
+        titulo_playlist varchar(255)
     }
 
-    Musica_Artista {
-        id_musica INT FK
-        id_artista INT FK
+    MusicaPlaylist {
+        id_musica int FK
+        id_playlist int FK
     }
 
-    Playlist_Musica {
-        id_playlist INT FK
-        id_musica INT FK
+     Usuario {
+        id_usuario int PK
+        nome_usuario varchar(255)
+        email varchar(255) 
+        data_registro date
     }
-
-    Musica ||--|| Disco : pertence a
-    Disco ||--|| Artista : pertence a
-    Playlist ||--|| Usuario : pertence a
-    Musica ||--|{ Artista : é interpretada por
-    Playlist ||--|{ Musica : contém
+  
     
+    Artista ||--o{ Disco : Pertence 
+    Disco ||--o{ Musica : Contem
+    Usuario ||--o{ Playlist : Cria
+    Musica ||--|{ MusicaPlaylist : Esta
+    Playlist ||--|{ MusicaPlaylist : Contem
 ```
