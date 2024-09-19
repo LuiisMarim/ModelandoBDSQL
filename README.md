@@ -1,10 +1,10 @@
-# SQL 🏦
+#🏦 - SQL
 
 Construindo um BANCO DE DADOS SQL  🗝️
 
 ## Sobre o desenvolvimento. 🖥️
 
-- O esquemático abaixo te levará aos principais tópicos da construção do BD  . ✔️
+- O esquemático abaixo te levará aos principais tópicos da construção do BD. ✔️
   
 <div align = "middle">
  
