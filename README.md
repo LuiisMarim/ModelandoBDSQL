@@ -10,4 +10,4 @@ Construindo um BANCO DE DADOS SQL  🗝️
  
 | 🔨 |
 |---------|
-| [MER](https://github.com) |
+| [MER](https://github.com/LuiisMarim/ModelandoBDSQL/blob/main/Mer.md) |
