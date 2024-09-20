@@ -5,7 +5,14 @@
 
 ```mermaid
 erDiagram
-    
+
+     Usuario {
+        id_usuario int PK
+        nome_usuario varchar(255)
+        email varchar(255) 
+        data_registro date
+    }
+
     Artista {
         id_artista int PK
         nome_artista varchar(255)
@@ -38,12 +45,7 @@ erDiagram
         id_playlist int FK
     }
 
-     Usuario {
-        id_usuario int PK
-        nome_usuario varchar(255)
-        email varchar(255) 
-        data_registro date
-    }
+
   
     
     Artista ||--o{ Disco : Pertence 
