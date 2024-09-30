@@ -1,60 +1,87 @@
-# MR -  Modelo relacional 💱
+# Modelo Entidade-Relacional
 
-### Abaixo a representação dos diagramas MR 👇
+## Entidades
 
+- **ARTISTA**
+  - `artista_id` (PK)
+  - `nome`
+  - `data_nascimento`
 
-```mermaid
-erDiagram
-    MUSICA {
-        int musica_id PK
-        string titulo
-        int duracao
-        int disco_id FK
-    }
+- **DISCO**
+  - `disco_id` (PK)
+  - `titulo`
+  - `data_lancamento`
+  - `artista_id` (FK)
 
-    ARTISTA {
-        int artista_id PK
-        string nome
-        date data_nascimento
-    }
+- **MUSICA**
+  - `musica_id` (PK)
+  - `titulo`
+  - `duracao`
+  - `disco_id` (FK)
 
-    DISCO {
-        int disco_id PK
-        string titulo
-        date data_lancamento
-        int artista_id FK
-    }
+- **USUARIO**
+  - `usuario_id` (PK)
+  - `nome`
+  - `email` (único)
+  - `data_registro`
 
-    USUARIO {
-        int usuario_id PK
-        string nome
-        string email
-        date data_registro
-    }
+- **PLAYLIST**
+  - `playlist_id` (PK)
+  - `titulo`
+  - `usuario_id` (FK)
 
-    PLAYLIST {
-        int playlist_id PK
-        string titulo
-        int usuario_id FK
-    }
+## Relacionamentos
 
-    MUSICA_ARTISTA {
-        int musica_id FK
-        int artista_id FK
-    }
+- **Música-Artista** (associação)
+  - Muitos-para-Muitos
+  - `musica_id` (FK)
+  - `artista_id` (FK)
 
-    PLAYLIST_MUSICA {
-        int playlist_id FK
-        int musica_id FK
-    }
+- **Playlist-Música** (associação)
+  - Muitos-para-Muitos
+  - `playlist_id` (FK)
+  - `musica_id` (FK)
 
-    MUSICA ||--o{ MUSICA_ARTISTA : "eh interpretada por"
-    ARTISTA ||--o{ MUSICA_ARTISTA : "interpreta"
-    MUSICA }o--|| DISCO : "pertence a"
-    DISCO ||--o{ ARTISTA : "eh criado por"
-    USUARIO ||--o{ PLAYLIST : "cria"
-    PLAYLIST ||--o{ PLAYLIST_MUSICA : "contem"
-    MUSICA ||--o{ PLAYLIST_MUSICA : "aparece em"
+## Diagrama MER
 
-
-```
+```plaintext
++---------------+        +------------------+
+|   ARTISTA     |        |     DISCO        |
+|---------------|        |------------------|
+| artista_id PK |<-------| disco_id PK      |
+| nome          |        | titulo           |
+| data_nasc     |        | data_lancamento  |
++---------------+        | artista_id FK    |
+                        +------------------+
+                               |
+                               |
+                               |
++----------------+          +------------------+
+|    MUSICA      |<--------|   MUSICA_ARTISTA |
+|----------------|          |------------------|
+| musica_id PK   |          | musica_id FK     |
+| titulo         |          | artista_id FK    |
+| duracao       |          +------------------+
+| disco_id FK    |
++----------------+
+                               |
+                               |
+                               |
++----------------+          +------------------+
+|    PLAYLIST    |<--------|  PLAYLIST_MUSICA |
+|----------------|          |------------------|
+| playlist_id PK |          | playlist_id FK   |
+| titulo         |          | musica_id FK     |
+| usuario_id FK  |          +------------------+
++----------------+
+                               |
+                               |
+                               |
+                            +----------------+           
+                            |    USUARIO     |
+                            |----------------|
+                            | usuario_id PK  |
+                            | nome           |
+                            | email (único)  |
+                            | data_registro  |
+                            +----------------+
