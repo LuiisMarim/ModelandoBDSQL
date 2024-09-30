@@ -1,56 +1,60 @@
-# MER conjunto com MR 💱
+# MR -  Modelo relacional 💱
 
-### Abaixo a representação dos diagramas MER/MR 👇
+### Abaixo a representação dos diagramas MR 👇
 
 
 ```mermaid
 erDiagram
-
-     Usuario {
-        id_usuario int PK
-        nome_usuario varchar(255)
-        email varchar(255) 
-        data_registro date
+    MUSICA {
+        int musica_id PK
+        string titulo
+        int duracao
+        int disco_id FK
     }
 
-    Artista {
-        id_artista int PK
-        nome_artista varchar(255)
-        data_nascimento date
+    ARTISTA {
+        int artista_id PK
+        string nome
+        date data_nascimento
     }
 
-    Disco {
-        id_disco int PK
-        id_artista int FK
-        titulo_disco varchar(255)
-        data_lancamento date
+    DISCO {
+        int disco_id PK
+        string titulo
+        date data_lancamento
+        int artista_id FK
     }
 
-    Musica {
-        id_musica int PK
-        id_disco int FK
-        titulo_musica varchar(255)
-        duracao int
+    USUARIO {
+        int usuario_id PK
+        string nome
+        string email
+        date data_registro
     }
 
-
-     Playlist {
-        id_playlist int PK
-        id_usuario int FK
-        titulo_playlist varchar(255)
+    PLAYLIST {
+        int playlist_id PK
+        string titulo
+        int usuario_id FK
     }
 
-    MusicaPlaylist {
-        id_musica int FK
-        id_playlist int FK
+    MUSICA_ARTISTA {
+        int musica_id FK
+        int artista_id FK
     }
 
+    PLAYLIST_MUSICA {
+        int playlist_id FK
+        int musica_id FK
+    }
 
-  
-    
-    Artista ||--o{ Disco : Pertence 
-    Disco ||--o{ Musica : Contem
-    Usuario ||--o{ Playlist : Cria
-    Musica ||--|{ MusicaPlaylist : Esta
-    Playlist ||--|{ MusicaPlaylist : Contem
+    MUSICA ||--o{ MUSICA_ARTISTA : "eh interpretada por"
+    ARTISTA ||--o{ MUSICA_ARTISTA : "interpreta"
+    MUSICA }o--|| DISCO : "pertence a"
+    DISCO ||--o{ ARTISTA : "eh criado por"
+    USUARIO ||--o{ PLAYLIST : "cria"
+    PLAYLIST ||--o{ PLAYLIST_MUSICA : "contem"
+    MUSICA ||--o{ PLAYLIST_MUSICA : "aparece em"
+
+
 ```
