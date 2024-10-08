@@ -2,6 +2,60 @@
 
 ### Abaixo a representação dos diagramas MR 👇
 
+``` mermaid
+---
+title: MER
+---
+erDiagram
+  USUARIO ||--o{ PLAYLIST : Cria
+     USUARIO{
+        int usuario_id PK
+        string nome
+        string email
+        date data_registro
+      }
+      PLAYLIST ||--o{ PLAYLIST_MUSICA : Contem
+      PLAYLIST{
+          int playlist_id PK
+          string titulo
+          int usuario_id FK
+      }
+
+    MUSICA }|--|| DISCO : Pertence
+    MUSICA }|--|| PLAYLIST_MUSICA : Aparece
+    MUSICA }o--|{ MUSICA_ARTISTA : Interpretada
+    MUSICA {
+        int musica_id PK
+        string titulo
+        int duracao
+        int disco_id FK
+    }
+    DISCO }o--|| ARTISTA : Criado
+    DISCO {
+        int disco_id PK
+        string titulo
+        date data_lancamento
+        int artista_id FK
+    }
+    ARTISTA }|--|{ MUSICA_ARTISTA : Interpreta
+    ARTISTA {
+        int artista_id PK
+        string nome
+        date data_nascimento
+    }
+    MUSICA_ARTISTA {
+        int musica_id FK
+        int artista_id FK
+    }
+    PLAYLIST_MUSICA{
+         int playlist_id FK
+          int musica_id FK
+    }
+     
+
+
+
+````
 
 ```mermaid
 erDiagram
