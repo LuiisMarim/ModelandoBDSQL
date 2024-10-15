@@ -11,13 +11,13 @@
   - `disco_id` (PK)
   - `titulo`
   - `data_lancamento`
-  - `artista_id` (FK)
+  
 
 - **MUSICA**
   - `musica_id` (PK)
   - `titulo`
   - `duracao`
-  - `disco_id` (FK)
+  
 
 - **USUARIO**
   - `usuario_id` (PK)
@@ -28,60 +28,67 @@
 - **PLAYLIST**
   - `playlist_id` (PK)
   - `titulo`
-  - `usuario_id` (FK)
-
-## Relacionamentos
-
-- **Música-Artista** (associação)
-  - Muitos-para-Muitos
-  - `musica_id` (FK)
-  - `artista_id` (FK)
-
-- **Playlist-Música** (associação)
-  - Muitos-para-Muitos
-  - `playlist_id` (FK)
-  - `musica_id` (FK)
-
+ 
 ## Diagrama MER
 
-```plaintext
-+---------------+        +------------------+
-|   ARTISTA     |        |     DISCO        |
-|---------------|        |------------------|
-| artista_id PK |<-------| disco_id PK      |
-| nome          |        | titulo           |
-| data_nasc     |        | data_lancamento  |
-+---------------+        | artista_id FK    |
-                        +------------------+
-                               |
-                               |
-                               |
-+----------------+          +------------------+
-|    MUSICA      |<--------|   MUSICA_ARTISTA |
-|----------------|          |------------------|
-| musica_id PK   |          | musica_id FK     |
-| titulo         |          | artista_id FK    |
-| duracao       |          +------------------+
-| disco_id FK    |
-+----------------+
-                               |
-                               |
-                               |
-+----------------+          +------------------+
-|    PLAYLIST    |<--------|  PLAYLIST_MUSICA |
-|----------------|          |------------------|
-| playlist_id PK |          | playlist_id FK   |
-| titulo         |          | musica_id FK     |
-| usuario_id FK  |          +------------------+
-+----------------+
-                               |
-                               |
-                               |
-                            +----------------+           
-                            |    USUARIO     |
-                            |----------------|
-                            | usuario_id PK  |
-                            | nome           |
-                            | email (único)  |
-                            | data_registro  |
-                            +----------------+
+```mermaid
+---
+title: Modelo Entidade Relacional
+---
+
+classDiagram
+    class Usuário{
+          usuario_id PK
+          nome char(50)          
+          email (único) char(50)  
+          data_registro  int(8)
+      }
+
+   
+     class Música{
+        musica_id PK
+        titulo char(50)
+        duracao float(5)
+    }
+    class Playlist{
+         playlist_id PK
+         titulo char(50)
+    }
+   
+    class Artista{
+        artista_id PK
+        nome char(50)
+        data_nasc int(8)
+    }
+     
+    
+     class Disco{
+        disco_id PK     
+        titulo char(50)
+        data_lancamento  int(8)
+    }
+     
+
+     
+
+
+    Música "1" --> "1" Disco : Pertence
+    Música "1" --> "n" Artista : Interpretada
+    Música "1" --> "1..n" Playlist : Aparece
+
+    Disco "1" --> "n" Música : Contém 
+    Disco "1" --> "1" Artista : Pertence
+
+    
+    Playlist "1" --> "1..n" Música : Contém
+    Usuário "1" --> "0..n" Playlist : Cria
+    
+
+
+
+
+
+
+
+
+``` 
