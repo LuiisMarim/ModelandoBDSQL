@@ -47,13 +47,13 @@ erDiagram
         int musica_id FK
     }
 
-    MUSICA ||--o{ MUSICA_ARTISTA : "eh interpretada por"
-    ARTISTA ||--o{ MUSICA_ARTISTA : "interpreta"
-    MUSICA }o--|| DISCO : "pertence a"
-    DISCO ||--o{ ARTISTA : "eh criado por"
-    USUARIO ||--o{ PLAYLIST : "cria"
-    PLAYLIST ||--o{ PLAYLIST_MUSICA : "contem"
-    MUSICA ||--o{ PLAYLIST_MUSICA : "aparece em"
+    MUSICA ||--|{ MUSICA_ARTISTA: o
+    ARTISTA ||--|{ MUSICA_ARTISTA : o
+    MUSICA ||--|| DISCO : o
+    DISCO ||--|| ARTISTA : o
+    USUARIO ||--o{ PLAYLIST : o
+    PLAYLIST ||--|{ PLAYLIST_MUSICA : o 
+    MUSICA ||--o{ PLAYLIST_MUSICA : o
 
 
 ```
