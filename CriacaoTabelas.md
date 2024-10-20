@@ -4,13 +4,13 @@
 
 CREATE TABLE ARTISTA (
     artista_id SERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
+    nome VARCHAR(255) NOT NULL UNIQUE,  -- Adicionada restrição de unicidade
     data_nascimento DATE
 );
 
 CREATE TABLE DISCO (
     disco_id SERIAL PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
+    titulo VARCHAR(255) NOT NULL UNIQUE,  -- Adicionada restrição de unicidade
     data_lancamento DATE,
     artista_id INT,
     FOREIGN KEY (artista_id) REFERENCES ARTISTA(artista_id)
@@ -18,7 +18,7 @@ CREATE TABLE DISCO (
 
 CREATE TABLE MUSICA (
     musica_id SERIAL PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
+    titulo VARCHAR(255) NOT NULL UNIQUE,  -- Adicionada restrição de unicidade
     duracao TIME NOT NULL,
     disco_id INT,
     FOREIGN KEY (disco_id) REFERENCES DISCO(disco_id)
