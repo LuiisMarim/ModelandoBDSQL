@@ -26,5 +26,13 @@
     join playlist p on pm.playlist_id  = p.playlist_id 
     where d.data_lancamento < '12/31/2010'
     and p.titulo = 'Alma Indie'
-   
+
+
+## 12. Liste os títulos das músicas que aparecem em mais de uma playlist.
+
+    select titulo
+    from musica m 
+    join playlist_musica pm on m.musica_id = pm.musica_id
+    group by m.titulo 
+    having count(pm.playlist_id) > 1
     
