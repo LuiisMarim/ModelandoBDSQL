@@ -1,3 +1,9 @@
+# Inserções
+- insert into artista (nome,data_nascimento) values ('Chappel Roan',NULL)
+- insert into playlist_musica values ('193','1013693681422696449')
+- insert into usuario values ('001','leo','leonardo@gmail.com','02/19/2022')
+
+
 ## 3. Quais são os títulos dos discos lançados após 2020?
 
     SELECT DISTINCT titulo
