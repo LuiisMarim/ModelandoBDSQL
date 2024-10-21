@@ -88,7 +88,7 @@
     join musica m on ma.musica_id  = m.musica_id 
     join playlist_musica pm on m.musica_id = pm.musica_id 
     group by m.titulo , a.nome 
-    having  count(pm.musica_id) > 2
+    having  count(pm.musica_id) > 3
 
 ## 20. Liste todos os usuários e suas playlists, mas apenas para playlists que contêm pelo menos 5 músicas?
 
@@ -99,7 +99,76 @@
     where p.playlist_id is not null 
     group by titulo, u.nome
     having count(pm.musica_id) > 5
+
+
+
     
+-- EX 01 
+
+select
+ titulo,  
+ duracao 
+from musica
+
+-----------------------------------
+
+-- EX 02 
+
+SELECT 
+    art.nome, 
+    art.artista_id, 
+    COUNT(ma.artista_id) AS quantidade 
+FROM 
+    artista art 
+JOIN 
+    musica_artista ma ON art.artista_id = ma.artista_id 
+GROUP BY 
+    art.nome, art.artista_id 
+HAVING 
+    COUNT(ma.artista_id) > 1;
+
+-----------------------------------
+
+-- EX 04
+
+   select * from musica
+   select * from artista 
+   select * from disco 
+   select * from musica_artista 
+
+   select 
+        mus.titulo,
+        art.nome
+    from disco d
+    join artista art on d.artista_id = art.artista_id 
+    join musica mus on mus.disco_id  = d.disco_id 
+    order by 
+    mus.titulo;
+
+ -- EX 07 
+
+SELECT 
+    art.nome,
+    AVG(EXTRACT(EPOCH FROM mus.duracao)) AS duracao_media_sec
+FROM 
+    artista art
+JOIN 
+    musica_artista ma ON art.artista_id = ma.artista_id 
+JOIN 
+    musica mus ON ma.musica_id = mus.musica_id
+GROUP BY 
+    art.nome;
+
+-- EX 09 
+
+   select  d.titulo ,
+   count(m.disco_id) AS quantidade_musica 
+   from disco d 
+   join musica m on d.disco_id  = m.disco_id  
+   group by d.titulo 
+   having count(m.disco_id) >= 10 
+
+
 
     
     
