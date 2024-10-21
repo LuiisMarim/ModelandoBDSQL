@@ -38,7 +38,7 @@
     having count(pm.playlist_id) > 1
 
 
-## 13. Encontre os nomes dos usuários que têm playlists que incluem a música 'Bohemian Rhapsody'.
+## 13. Encontre os nomes dos usuários que têm playlists que incluem a música 'Alive'.
     select distinct nome
     from usuario u 
     join playlist p on u.usuario_id = p.usuario_id 
