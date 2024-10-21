@@ -81,7 +81,7 @@
     where playlist_musica.playlist_id is NULL    
 
 
-## 18. 
+## 18. Liste os títulos das músicas e os nomes dos artistas que têm mais de 3 músicas em uma mesma playlist.
     
     select m.titulo , a.nome from artista a 
     join musica_artista ma on a.artista_id  = ma.artista_id 
