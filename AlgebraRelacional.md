@@ -36,6 +36,15 @@
     join playlist_musica pm on m.musica_id = pm.musica_id
     group by m.titulo 
     having count(pm.playlist_id) > 1
+
+
+## 13. Encontre os nomes dos usuários que têm playlists que incluem a música 'Bohemian Rhapsody'.
+    select distinct nome
+    from usuario u 
+    join playlist p on u.usuario_id = p.usuario_id 
+    join playlist_musica pm on p.playlist_id = pm.playlist_id 
+    join musica m on pm.musica_id = m.musica_id 
+    where m.titulo LIKE 'Alive'    
     
 ## 14. Qual é o título da música mais longa do disco 'PIRATA'?.
 
