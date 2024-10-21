@@ -80,6 +80,16 @@
     left join playlist_musica on musica.musica_id = playlist_musica.musica_id 
     where playlist_musica.playlist_id is NULL    
 
+
+## 18. 
+    
+    select m.titulo , a.nome from artista a 
+    join musica_artista ma on a.artista_id  = ma.artista_id 
+    join musica m on ma.musica_id  = m.musica_id 
+    join playlist_musica pm on m.musica_id = pm.musica_id 
+    group by m.titulo , a.nome 
+    having  count(pm.musica_id) > 2
+
 ## 20. Liste todos os usuários e suas playlists, mas apenas para playlists que contêm pelo menos 5 músicas?
 
     select titulo, u.nome
