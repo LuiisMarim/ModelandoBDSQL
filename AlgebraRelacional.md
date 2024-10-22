@@ -10,12 +10,35 @@
 - insert into usuario values ('029', 'bruno', 'bruno@gmail.com', '2022-11-14')
 
 # Inserção de Artista
-- insert into artista (nome,data_nascimento) values ('Chappel Roan',NULL)
+- insert into artista (nome, data_nascimento) values ('Chappel Roan',NULL)
 
 # Inserção de Música em playlists
+
 - insert into playlist_musica values ('193','1013693681422696449')
+- insert into playlist_musica values ('222','1013693681422696449')
+- insert into playlist_musica values ('987','1013697385933012993')
+- insert into playlist_musica values ('987','1013697386465132545')
+- insert into playlist_musica values ('987','1013697386989256705')
+- insert into playlist_musica values ('222','1013695017288531969')
+- insert into playlist_musica values ('987','1013695017288531969')
+- insert into playlist_musica values ('193','1014374603261050881')
+- insert into playlist_musica values ('193','1014374603786649601')
+- insert into playlist_musica values ('193','1014374604311724033')
+- insert into playlist_musica values ('193','1014374604837093377')
+- insert into playlist_musica values ('193','1014374604837093377')
+- insert into playlist_musica values ('214','1014119095680696321')
+- insert into playlist_musica values ('214','1014119096750538753')
+- insert into playlist_musica values ('214','1014119099433746433')
+- insert into playlist_musica values ('214','1014118776500715521')
+- insert into playlist_musica values ('193','1013697391226683393')
+- insert into playlist_musica values ('987','1013697391226683393') 
 
+# Criação de Playlist 
 
+- insert into playlist (playlist_id ,titulo ,usuario_id) values (214,'Alma Indie', 007) 
+- insert into playlist (playlist_id ,titulo ,usuario_id) values (193,'Viajantes', 007) 
+- insert into playlist (playlist_id ,titulo ,usuario_id) values (222,'Noite Iluminada', 003) 
+- insert into playlist (playlist_id ,titulo ,usuario_id) values (987,'Ondas Sonoras', 001) 
 
 ## 1. Liste o título de todas as músicas e suas durações. 
 
@@ -25,6 +48,7 @@
     from musica
 
 ## 2. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+
     SELECT 
     art.nome, 
     art.artista_id, 
