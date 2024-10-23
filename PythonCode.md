@@ -1,5 +1,11 @@
-# Abaixo o código usado para inserção de dados no banco. 
+# Código usado para inserção de dados no banco. 
 ---
+## Como usar:
+Resgate sua conection string do banco de dados CockRoach e substitua nos campos indicados. 
+
+Para adicionar albuns e artitas, troque no lugar indicado com <*# Coloque o ID do álbum aqui*> e rode o programa. Para cada inserção de album será necessário compilar novamente o código alterando o código de artista. 
+
+OBS.: A cada compilação o código gera um aviso de cache, porém logo após envia a mensagem de feedback sobre o sucesso da inserção.
 
 ### ALBUNS 💿
 ➡️ <b>Thriller</b> : *2ANVost0y2y52ema1E9xAZ*
