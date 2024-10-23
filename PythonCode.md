@@ -39,7 +39,7 @@ def connect_to_db():
     try:
         conn = psycopg2.connect(
             dbname="NOME DATA BASE COCKROACH DB",
-            user="USUARIO COCKROACH DB,
+            user="USUARIO COCKROACH DB",
             password="SENHA COCKROACH DB",
             host="HOST COCKROACH DB",
             port="PORT COCKROACH DB"
