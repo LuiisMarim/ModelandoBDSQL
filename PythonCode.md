@@ -12,6 +12,17 @@
 
 ➡️ <b>Midnight Memories</b> : *7p1fX8aUySrBdx4WSYspOu*
 
+➡️ <b>Made in The AM</b> : *1gMxiQQSg5zeu4htBosASY*
+
+➡️ <b>Hot Fuss</b> : *6TJmQnO44YE5BtTxH8pop1*
+
+➡️ <b>The Killers</b> : *4cJ2Up81K2vyvPHFQ62iw1*
+
+➡️ <b>All This Nad Blood</b> : *2r1iXEfyFZaYSmthwnKGGp*
+
+➡️ <b>Midnight Memories</b> : *7p1fX8aUySrBdx4WSYspOu*
+
+
 ``` python
 
 import psycopg2
@@ -27,11 +38,11 @@ def spotify_auth():
 def connect_to_db():
     try:
         conn = psycopg2.connect(
-            dbname="ProjetoDB01",
-            user="luiis",
-            password="lquvq47U6Z68voaHkJ1e5g",
-            host="hard-beast-11738.6wr.aws-us-west-2.cockroachlabs.cloud",
-            port="26257"
+            dbname="NOME DATA BASE COCKROACH DB",
+            user="USUARIO COCKROACH DB,
+            password="SENHA COCKROACH DB",
+            host="HOST COCKROACH DB",
+            port="PORT COCKROACH DB"
         )
         return conn
     except Exception as e:
